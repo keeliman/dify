@@ -237,3 +237,16 @@ To protect your privacy, please avoid posting security issues on GitHub. Instead
 ## License
 
 This repository is available under the [Dify Open Source License](LICENSE), which is essentially Apache 2.0 with a few additional restrictions.
+
+## Using OLLAMA locally
+
+When using OLLAMA locally with Dify in a Docker environment, it's important to note that you cannot use `localhost` to call the OLLAMA APIs. Instead, you must use `host.docker.internal`.
+
+Here's why:
+
+- `localhost` in a Docker container refers to the container itself, not your host machine.
+- `host.docker.internal` is a special hostname that allows Docker containers to communicate with the host machine.
+
+Therefore, when configuring the connection to OLLAMA in Dify, make sure to use `http://host.docker.internal:11434` (or the appropriate port) as the base URL for the OLLAMA API.
+
+Example configuration:
